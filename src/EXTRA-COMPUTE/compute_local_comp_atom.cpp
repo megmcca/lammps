@@ -15,7 +15,7 @@
    Contributing authors: Megan McCarthy (SNL), Stan Moore (SNL)
 ------------------------------------------------------------------------- */
 
-#include "compute_local_comp_atom.h"
+#include "compute_local_comp_atom_bespoke.h"
 
 #include "atom.h"
 #include "comm.h"
@@ -40,26 +40,37 @@ using namespace MathConst;
 ComputeLocalCompAtom::ComputeLocalCompAtom(LAMMPS *lmp, int narg, char **arg) :
     Compute(lmp, narg, arg), result(nullptr)
 {
-  if (narg < 3 || narg > 5) error->all(FLERR, "Illegal compute local/comp/atom command");
+  // if (narg < 3 || narg > 5) error->all(FLERR, "Illegal compute local/comp/atom command");
+  // TODO fix narg input when completed
+  if (narg < 3 || narg > 50) error->all(FLERR, "Illegal compute local/comp/atom (bespoke) command");
 
   cutoff = 0.0;
+  ntypes = atom->ntypes;
+  size_peratom_cols = 1 + ntypes; // basic local comp compute
+
+  // define c_global vector
+  int n = 0;
+  for (n = 0; n < ntypes + 1; n++) { c_global[n] = 0.0; }
 
   int iarg = 3;
   while (iarg < narg) {
     if (strcmp(arg[iarg], "cutoff") == 0) {
-      if (iarg + 2 > narg) error->all(FLERR, "Illegal compute local/comp/atom command");
+      if (iarg + 2 > narg) error->all(FLERR, "Illegal compute local/comp/atom (bespoke) command");
       cutoff = utils::numeric(FLERR, arg[iarg + 1], false, lmp);
-      if (cutoff <= 0.0) error->all(FLERR, "Illegal compute local/comp/atom command");
+      if (cutoff <= 0.0) error->all(FLERR, "Illegal compute local/comp/atom (bespoke) command");
       iarg += 2;
+    } 
+    else if (strcmp(arg[iarg], "c_global") == 0) {
+      if (iarg + 2 + ntypes > narg) error->all(FLERR, "Illegal compute local/comp/atom (bespoke) command");
+      // c_global = utils::numeric(FLERR, arg[iarg + 1 + ntypes], false, lmp);
+      for (n = 0; n < ntypes + 1; n++) { c_global[n] = utils::numeric(FLERR, arg[iarg + 1 + n], false, lmp); }
+      if (cutoff <= 0.0) error->all(FLERR, "Illegal compute local/comp/atom (bespoke) command");
+      iarg += 2 + ntypes;
     } else
-      error->all(FLERR, "Illegal compute local/comp/atom command");
+      error->all(FLERR, "Illegal compute local/comp/atom (bespoke) command");
   }
 
   peratom_flag = 1;
-
-  ntypes = atom->ntypes;
-  size_peratom_cols = 1 + ntypes;
-
   nmax = 0;
 }
 
@@ -79,7 +90,7 @@ void ComputeLocalCompAtom::init()
 {
   if (!force->pair && cutoff == 0.0)
     error->all(FLERR,
-               "Compute local/comp/atom requires a cutoff be specified "
+               "Compute local/comp/atom (bespoke) requires a cutoff be specified "
                "or a pair style be defined");
 
   double skin = neighbor->skin;
@@ -92,7 +103,7 @@ void ComputeLocalCompAtom::init()
 
     if (cutoff > cutghost)
       error->all(FLERR,
-                 "Compute local/comp/atom cutoff exceeds ghost atom range - "
+                 "Compute local/comp/atom (bespoke) cutoff exceeds ghost atom range - "
                  "use comm_modify cutoff command");
   }
 
@@ -123,6 +134,7 @@ void ComputeLocalCompAtom::init_list(int /*id*/, NeighList *ptr)
 void ComputeLocalCompAtom::compute_peratom()
 {
   int i, j, ii, jj, inum, jnum;
+  double r_inv, rsq_inv, lambda1, lambda2;
   double xtmp, ytmp, ztmp, delx, dely, delz, rsq;
   int *ilist, *jlist, *numneigh, **firstneigh;
   int count, itype, jtype;

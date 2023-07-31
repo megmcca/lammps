@@ -37,6 +37,7 @@ class ComputeLocalCompAtom : public Compute {
   int nmax, ntypes;
   double cutoff;            // global cutoff distance
   double cutsq;             // cutoff**2
+  double *c_global;          // peratom array of local compositions
   class NeighList *list;    // neighbor list
   double **result;          // peratom array of local compositions
 };
