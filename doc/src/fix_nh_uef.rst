@@ -199,7 +199,7 @@ and *press* options. The temperature and pressure computes used must be
 of type *temp/uef* and *pressure/uef*\ .
 
 These fixes compute the same global scalar and vector quantities as
-:doc:`fix nvt andnpt <fix_nh>`.
+:doc:`fix nvt or npt <fix_nh>`.
 
 These fixes are not invoked during :doc:`energy minimization <minimize>`.
 

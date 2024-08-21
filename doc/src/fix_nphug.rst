@@ -82,7 +82,7 @@ This leads to the following additional restrictions on the keywords:
 
 Essentially, a Hugoniostat simulation is an NPT simulation in which the
 user-specified target temperature is replaced with a time-dependent
-target temperature Tt obtained from the following equation:
+target temperature :math:`T_t` obtained from the following equation:
 
 .. math::
 
@@ -182,9 +182,9 @@ compute temperature on a subset of atoms.
 The cumulative energy change in the system imposed by this fix is
 included in the :doc:`thermodynamic output <thermo_style>` keywords
 *ecouple* and *econserve*.  See the :doc:`thermo_style <thermo_style>`
-doc page for details.  Note that this energy is \*not\* included in
+doc page for details.  Note that this energy is NOT included in
 the definition of internal energy E when calculating the value of
-Delta in the above equation.
+:math:`\Delta` in the above equation.
 
 This fix computes a global scalar which can be accessed by various
 :doc:`output commands <Howto_output>`.  The scalar is the same
@@ -195,13 +195,13 @@ This fix also computes a global vector of quantities, which can be
 accessed by various :doc:`output commands <Howto_output>`.  The scalar
 The vector values are "intensive".
 
-The vector stores three quantities unique to this fix (:math:`\Delta`,
-Us, and up), followed by all the internal Nose/Hoover thermostat and
-barostat variables defined for :doc:`fix npt <fix_nh>`. Delta is the
+The vector stores three quantities unique to this fix: :math:`\Delta`,
+:math:`U_s`, and :math:`_p`, which are followed by all the internal Nose/Hoover thermostat and
+barostat variables defined for :doc:`fix npt <fix_nh>`.  :math:`\Delta` is the
 deviation of the temperature from the target temperature, given by the
-above equation.  Us and up are the shock and particle velocity
+above equation.  :math:`U_s` and :math:`u_p` are the shock velocity and the particle velocity
 corresponding to a steady shock calculated from the RH
-conditions. They have units of distance/time.
+conditions. They both have units of distance/time.
 
 Restrictions
 """"""""""""

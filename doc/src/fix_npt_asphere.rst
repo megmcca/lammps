@@ -96,7 +96,7 @@ spatial :doc:`region <region>`, or to remove the center-of-mass
 velocity from a group of atoms, or to remove the x-component of
 velocity from the calculation.
 
-This is not done by default, but only if the :doc:`fix_modify
+Bias removal is done by default, but only if the :doc:`fix_modify
 <fix_modify>` command is used to assign a temperature compute to this
 fix that includes such a bias term.  See the doc pages for individual
 :doc:`compute temp commands <compute>` to determine which ones include

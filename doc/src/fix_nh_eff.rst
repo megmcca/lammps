@@ -59,7 +59,7 @@ Description
 
 These commands perform time integration on Nose-Hoover style
 non-Hamiltonian equations of motion for nuclei and electrons in the
-group for the :doc:`electron force field <pair_eff>` model.  The fixes
+group for the electron Force Field (eFF) model, implemented in  :doc:`pair_style eff/cut <pair_eff>`.  The fixes
 are designed to generate positions and velocities sampled from the
 canonical (nvt), isothermal-isobaric (npt), and isenthalpic (nph)
 ensembles.  This is achieved by adding some dynamic variables which

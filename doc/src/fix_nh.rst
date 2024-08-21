@@ -491,9 +491,9 @@ with :doc:`compute commands <compute>` that remove a "bias" from the
 atom velocities.  E.g. to apply the thermostat only to atoms within a
 spatial :doc:`region <region>`, or to remove the center-of-mass
 velocity from a group of atoms, or to remove the x-component of
-velocity from the calculation.
+velocity from the calculation. 
 
-This is not done by default, but only if the :doc:`fix_modify
+Bias removal is not done by default, but only if the :doc:`fix_modify
 <fix_modify>` command is used to assign a temperature compute to this
 fix that includes such a bias term.  See the doc pages for individual
 :doc:`compute temp commands <compute>` to determine which ones include
@@ -530,7 +530,7 @@ according to the following factorization of the Liouville propagator
    \exp \left(\mathrm{i} L_{\rm T\textrm{-}baro} \frac{\Delta t}{2} \right) \\
    &+ \mathcal{O} \left(\Delta t^3 \right)
 
-This factorization differs somewhat from that of Tuckerman et al, in
+This factorization differs somewhat from that of (:ref:`(Tuckerman) <nh-Tuckerman>`), in
 that the barostat is only updated at the outermost rRESPA level,
 whereas Tuckerman's factorization requires splitting the pressure into
 pieces corresponding to the forces computed at each rRESPA level. In
@@ -625,7 +625,7 @@ its value is 1 if *couple xyz* is used or *couple xy* for a 2d
 simulation, otherwise its value is 3.
 
 The order of values in the global vector and their meaning is as
-follows.  The notation means there are tchain values for eta, followed
+follows.  The notation means there are *tchain* values for eta, followed
 by tchain for eta_dot, followed by ndof for omega, etc:
 
 * eta[tchain] = particle thermostat displacements (unitless)
@@ -654,10 +654,10 @@ These fixes are not invoked during :doc:`energy minimization <minimize>`.
 Restrictions
 """"""""""""
 
-*X*, *y*, *z* cannot be barostatted if the associated dimension is not
-periodic.  *Xy*, *xz*, and *yz* can only be barostatted if the
+Keywords *x*, *y*, *z* cannot be barostatted if the associated dimension is not
+periodic. Keywords *xy*, *xz*, and *yz* can only be barostatted if the
 simulation domain is triclinic and the second dimension in the keyword
-(\ *y* dimension in *xy*\ ) is periodic.  *Z*, *xz*, and *yz*, cannot be
+(\ *y* dimension in *xy*\ ) is periodic. Keywords *z*, *xz*, and *yz*, cannot be
 barostatted for 2D simulations.  The :doc:`create_box <create_box>`,
 :doc:`read data <read_data>`, and :doc:`read_restart <read_restart>`
 commands specify whether the simulation box is orthogonal or
