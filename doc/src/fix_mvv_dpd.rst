@@ -62,8 +62,8 @@ specific choice of DPD parameters, and needs to be tuned on a
 case-by-case basis.  Specification of a *lambda* value is optional.
 If specified, the setting must be from 0.0 to 1.0.  If not specified,
 a default value of 0.5 is used, which effectively reproduces the
-standard velocity-Verlet (VV) scheme.  For more details, see
-:ref:`Groot <Groot2>`.
+standard velocity-Verlet (VV) scheme.  For more details, see ()
+:ref:`Groot <Groot2>`).
 
 Fix *mvv/dpd* updates the position and velocity of each atom.  It can be
 used with the :doc:`pair_style mdpd <pair_mesodpd>` command or other

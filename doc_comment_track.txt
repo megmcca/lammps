@@ -1,0 +1,9 @@
+https://docs.lammps.org/Manual.pdf (accessed aug15-20th) 
+Meg: pages 1771 to 2042
+1. pg 1774 fix mol_swap: variable spacing
+2. pg 1779 fix move: clean up equation syntax/formatting
+3. pg 1782 fix msst: spacing, typos, minor clarity edit
+4. pg 1785 fix mvv_dpd: add parentheses citation
+5. pg 1788 fix_neb: define MEP, formatting, correct citation 
+5. pg 1790 fix_neb_spin: define MEP, remove extraneous parse-literal
+6. pg 1792 fix_nvt etc.: START HERE NEXT TIME

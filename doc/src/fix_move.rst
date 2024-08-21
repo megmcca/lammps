@@ -154,12 +154,12 @@ around the rotation axis is consistent with the right-hand rule: if your
 right-hand thumb points along *R*, then your fingers wrap around the
 axis in the direction of rotation.
 
-This style also sets the velocity of each atom to (omega cross Rperp)
-where omega is its angular velocity around the rotation axis and Rperp
+This style also sets the velocity of each atom to the cross product of *omega* and *R_perp*,
+where *omega* is its angular velocity around the rotation axis and *R_perp*
 is a perpendicular vector from the rotation axis to the atom.  If the
 defined :doc:`atom_style <atom_style>` assigns an angular velocity or
 angular momentum or orientation to each atom (:doc:`atom styles
-<atom_style>` sphere, ellipsoid, line, tri, body), then
+<atom_style>` *sphere*, *ellipsoid*, *line*, *tri*, *body*), then
 those properties are also updated appropriately to correspond to the
 atom's motion and rotation over time.
 
@@ -241,7 +241,7 @@ fix.
 
 This fix produces a per-atom array which can be accessed by various
 :doc:`output commands <Howto_output>`.  The number of columns for each
-atom is 3, and the columns store the original unwrapped x,y,z coords of
+atom is 3, and the columns store the original unwrapped x,y,z coordinates of
 each atom.  The per-atom values can be accessed on any timestep.
 
 No parameter of this fix can be used with the *start/stop* keywords of

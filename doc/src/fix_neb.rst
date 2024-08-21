@@ -53,7 +53,7 @@ and on the :doc:`Howto replica <Howto_replica>` doc page.  The fix neb
 command must be used with the "neb" command and defines how
 inter-replica nudging forces are computed.  A NEB calculation is
 divided in two stages. In the first stage n replicas are relaxed
-toward a MEP until convergence.  In the second stage, the climbing
+toward a minimum energy path (MEP) until convergence.  In the second stage, the climbing
 image scheme (see :ref:`(Henkelman2) <Henkelman2>`) is enabled, so that the
 replica having the highest energy relaxes toward the saddle point
 (i.e. the point of highest energy along the MEP), and a second
@@ -115,10 +115,10 @@ With a value of *ideal*, the spring force is computed as suggested in
 
    F_\parallel = -Kspring \cdot (RD - RD_{ideal}) / (2 \cdot meanDist)
 
-where *RD* is the "reaction coordinate" see :doc:`neb <neb>` section,
+where *RD* is the "reaction coordinate" (see :doc:`neb <neb>` section),
 and :math:`RD_{ideal}` is the ideal *RD* for which all the images are
-equally spaced.  I.e. :math:`RD_{ideal} = (i-1) \cdot meanDist` when the
-climbing replica is off, where *i* is the replica number).  The
+equally spaced.  In other words, :math:`RD_{ideal} = (i-1) \cdot meanDist` when the
+climbing replica is off, where *i* is the replica number.  The
 *meanDist* is the average distance between replicas.  Note that in this
 case the specified *Kspring* is in force units. When the climbing
 replica is on, :math:`RD_{ideal}` and :math:`meanDist` are calculated
@@ -182,18 +182,18 @@ By default, no additional forces act on the first and last replicas
 during the NEB relaxation, so these replicas simply relax toward their
 respective local minima.  By using the key word *end*, additional forces
 can be applied to the first and/or last replicas, to enable them to
-relax toward a MEP while constraining their energy E to the target
-energy ETarget.
+relax toward a MEP while constraining their energy *E* to the target
+energy :math:`E_{target}`.
 
-If :math:`E_{Target} > E`, the interatomic force :math:`F_i` for the
+If :math:`E_{target} > E`, the interatomic force :math:`F_i` for the
 specified replica becomes:
 
 .. math::
 
-   F_i & = -\nabla V + (\nabla V \cdot T' + (E - E_{Target}) \cdot K_{spring3}) T', \qquad  \textrm{when} \quad \nabla V \cdot T' < 0 \\
-   F_i & = -\nabla V + (\nabla V \cdot T' + (E_{Target} - E) \cdot K_{spring3}) T', \qquad \textrm{when} \quad \nabla V  \cdot T' > 0
+   F_i & = -\nabla V + (\nabla V \cdot T' + (E - E_{target}) \cdot K_{spring3}) T', \qquad  \textrm{when} \quad \nabla V \cdot T' < 0 \\
+   F_i & = -\nabla V + (\nabla V \cdot T' + (E_{target} - E) \cdot K_{spring3}) T', \qquad \textrm{when} \quad \nabla V  \cdot T' > 0
 
-The "spring" constant on the difference in energies is the specified
+The spring constant on the difference in energies is the specified
 *Kspring3* value.
 
 When *estyle* is specified as *first*, the force is applied to the first
@@ -201,12 +201,12 @@ replica.  When *estyle* is specified as *last*, the force is applied to
 the last replica.  Note that the *end* keyword can be used twice to add
 forces to both the first and last replicas.
 
-For both these *estyle* settings, the target energy *ETarget* is set
+For both these *estyle* settings, the target energy :math:`E_{target}` is set
 to the initial energy of the replica (at the start of the NEB
 calculation).
 
 If the *estyle* is specified as *last/efirst* or *last/efirst/middle*,
-force is applied to the last replica, but the target energy *ETarget* is
+force is applied to the last replica, but the target energy :math:`E_{target}` is
 continuously set to the energy of the first replica, as it evolves
 during the NEB relaxation.
 
@@ -278,7 +278,7 @@ specified (no inter-replica force on the end replicas).
 
 .. _WeinanE:
 
-**(WeinanE)** E, Ren, Vanden-Eijnden, Phys Rev B, 66, 052301 (2002).
+**(Weinan)** Weinan, Ren, Vanden-Eijnden, Phys Rev B, 66, 052301 (2002).
 
 .. _Jonsson:
 

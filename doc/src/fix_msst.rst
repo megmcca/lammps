@@ -47,7 +47,7 @@ for a detailed description of this method.  The MSST varies the cell
 volume and temperature in such a way as to restrain the system to the
 shock Hugoniot and the Rayleigh line. These restraints correspond to
 the macroscopic conservation laws dictated by a shock
-front. *shockvel* determines the steady shock velocity that will be
+front. The *shockvel* setting determines the steady shock velocity that will be
 simulated.
 
 To perform a simulation, choose a value of *q* that provides volume
@@ -71,7 +71,7 @@ kinetic energy at the start of the simulation.  Setting this parameter
 to a non-zero value may assist in compression at the start of
 simulations where it is slow to occur.
 
-If keywords *e0*, *p0*,or *v0* are not supplied, these quantities will
+If keywords *e0*, *p0*, or *v0* are not supplied, these quantities will
 be calculated on the first step, after the energy specified by
 *tscale* is removed.  The value of *e0* is not used in the dynamical
 equations, but is used in calculating the deviation from the Hugoniot.
@@ -84,7 +84,7 @@ details.  The value of *beta* must be between 0.0 and 1.0 inclusive.
 A value of 0.0 means no contribution, a value of 1.0 means a full
 contribution.
 
-Values of shockvel less than a critical value determined by the
+Values of *shockvel* less than a critical value determined by the
 material response will not have compressive solutions. This will be
 reflected in lack of significant change of the volume in the MSST.
 
@@ -114,7 +114,7 @@ The *dftb* keyword is to allow this fix to be used when LAMMPS is
 being driven by DFTB+, a density-functional tight-binding code. If the
 keyword *dftb* is used with a value of *yes*, then the MSST equations
 are altered to account for the electron entropy contribution to the
-Hugonio relations and total energy.  See :ref:`(Reed2) <Reed2>` and
+Hugoniot relations and total energy.  See :ref:`(Reed2) <Reed2>` and
 :ref:`(Goldman) <Goldman2>` for details on this contribution.  In this case,
 you must define a :doc:`fix external <fix_external>` command in your
 input script, which is used to callback to DFTB+ during the LAMMPS
@@ -149,8 +149,7 @@ the fix.  By monitoring the thermodynamic *econserve* output, this can
 be used to test if the MD timestep is sufficiently small for accurate
 integration of the dynamic equations.
 
-The global vector contains four values in the following order.  The
-vector values output by this fix are "intensive".
+The vector values output by this fix are "intensive". The global vector contains four values in the following order:
 
 [\ *dhugoniot*, *drayleigh*, *lagrangian_speed*,
 *lagrangian_position*]

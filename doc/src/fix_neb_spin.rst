@@ -12,10 +12,7 @@ Syntax
 
 * ID, group-ID are documented in :doc:`fix <fix>` command
 * neb/spin = style name of this fix command
-
-.. parsed-literal::
-
-   Kspring = spring constant for parallel nudging force
+* Kspring = spring constant for parallel nudging force
    (force/distance units or force units, see parallel keyword)
 
 Examples
@@ -32,19 +29,20 @@ Add nudging forces to spins in the group for a multi-replica
 simulation run via the :doc:`neb/spin <neb_spin>` command to perform a
 geodesic nudged elastic band (GNEB) calculation for finding the
 transition state.
-Hi-level explanations of GNEB are given with the
+High-level explanations of GNEB are given with the
 :doc:`neb/spin <neb_spin>` command and on the
 :doc:`Howto replica <Howto_replica>` doc page.
-The fix neb/spin command must be used with the "neb/spin" command and
-defines how inter-replica nudging forces are computed.  A GNEB
-calculation is divided in two stages. In the first stage n replicas
-are relaxed toward a MEP until convergence.  In the second stage, the
+The fix neb/spin command must be used with the *neb/spin* command and
+defines how inter-replica nudging forces are computed.  
+
+A GNEB calculation is divided in two stages. In the first stage, n replicas
+are relaxed toward a minimum energy path (MEP) until convergence.  In the second stage, the
 climbing image scheme is enabled, so that the replica having the highest
 energy relaxes toward the saddle point (i.e. the point of highest energy
 along the MEP), and a second relaxation is performed.
 
 The nudging forces are calculated as explained in
-:ref:`(Bessarab) <BessarabB>`).
+(:ref:`(Bessarab) <Bessarab>`).
 See this reference for more explanation about their expression.
 
 Restart, fix_modify, output, run start/stop, minimize info
