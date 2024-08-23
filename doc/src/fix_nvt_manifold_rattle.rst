@@ -41,7 +41,7 @@ Description
 
 This fix combines the RATTLE-based :ref:`(Andersen) <Andersen2>` time
 integrator of :doc:`fix nve/manifold/rattle <fix_nve_manifold_rattle>`
-:ref:`(Paquay) <Paquay3>` with a Nose-Hoover-chain thermostat to sample the
+:ref:`(Paquay) <Paquay3>` with a Nose/Hoover-chain thermostat to sample the
 canonical ensemble of particles constrained to a curved surface
 (manifold). This sampling does suffer from discretization bias of
 O(dt).  For a list of currently supported manifolds and their
@@ -52,11 +52,19 @@ parameters, see the :doc:`Howto manifold <Howto_manifold>` doc page.
 Restart, fix_modify, output, run start/stop, minimize info
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-No information about this fix is written to :doc:`binary restart files <restart>`.  None of the :doc:`fix_modify <fix_modify>` options
-are relevant to this fix.  No global or per-atom quantities are stored
+No information about this fix is written to :doc:`binary restart files <restart>`.  
+
+None of the :doc:`fix_modify <fix_modify>` options
+are relevant to this fix.  
+
+No global or per-atom quantities are stored
 by this fix for access by various :doc:`output commands <Howto_output>`.
+
+
 No parameter of this fix can be used with the *start/stop* keywords of
-the :doc:`run <run>` command.  This fix is not invoked during :doc:`energy minimization <minimize>`.
+the :doc:`run <run>` command.  
+
+This fix is not invoked during :doc:`energy minimization <minimize>`.
 
 ----------
 
@@ -71,7 +79,9 @@ LAMMPS was built with that package.  See the :doc:`Build package <Build_package>
 Related commands
 """"""""""""""""
 
-:doc:`fix nve/manifold/rattle <fix_nvt_manifold_rattle>`, :doc:`fix manifoldforce <fix_manifoldforce>` **Default:** every = 0
+:doc:`fix nve/manifold/rattle <fix_nvt_manifold_rattle>`, :doc:`fix manifoldforce <fix_manifoldforce>`
+
+**Default:** every = 0
 
 ----------
 

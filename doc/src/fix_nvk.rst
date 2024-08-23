@@ -51,14 +51,14 @@ the :doc:`run <run>` command.  This fix is not invoked during :doc:`energy minim
 Restrictions
 """"""""""""
 
+This fix is part of the EXTRA-FIX package.  It is only enabled if
+LAMMPS was built with that package.  See the
+:doc:`Build package <Build_package>` page for more info.
+
 The Gaussian thermostat only works when it is applied to all atoms in
 the simulation box. Therefore, the group must be set to all.
 
 This fix has not yet been implemented to work with the RESPA integrator.
-
-This fix is part of the EXTRA-FIX package.  It is only enabled if
-LAMMPS was built with that package.  See the
-:doc:`Build package <Build_package>` page for more info.
 
 Related commands
 """"""""""""""""

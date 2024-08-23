@@ -68,21 +68,26 @@ far from the grain boundary does not experience a synthetic force as
 its surrounding is that of an oriented single crystal and thermal
 fluctuations are masked by the parameter *eta*\ . Near the grain
 boundary however, the gradient is nonzero and synthetic force terms
-are computed.  The orientationsFile specifies the perfect oriented
+are computed.  
+
+The *orientationsFile* specifies the perfect oriented
 crystal basis vectors for the two adjoining crystals. The first three
-lines (line=row vector) for the energetically penalized and the last
+lines (line=row vector) for the energetically penalized grain and the last
 three lines for the energetically favored grain assuming *u0* is
-positive. For negative *u0*, this is reversed. With the *cutoff*
-parameter, the size of the region around each atom which is used in
+positive. For negative *u0*, this is reversed. 
+
+With the *cutoff* parameter, the size of the region around each atom which is used in
 the order parameter computation is defined. The cutoff must be smaller
 than the interaction range of the MD potential. It should at least
 include the nearest neighbor shell. For high temperatures or low angle
 grain boundaries, it might be beneficial to increase the cutoff in
 order to get a more precise identification of the atoms
 surrounding. However, computation time will increase as more atoms are
-considered in the order parameter and force computation.  It is also
-worth noting that the cutoff radius must not exceed the communication
-distance for ghost atoms in LAMMPS. With orientationsFile, the 6
+considered in the order parameter and force computation.  It is important to note that the cutoff radius must not exceed the communication
+distance for ghost atoms in LAMMPS. 
+
+
+With *orientationsFile*, the 6
 oriented crystal basis vectors is specified. Each line of the input
 file contains the three components of a primitive lattice vector
 oriented according to the grain orientation in the simulation box. The
@@ -130,9 +135,7 @@ LAMMPS was built with that package. See the :doc:`Build package
 Related commands
 """"""""""""""""
 
-:doc:`fix_modify <fix_modify>`
-
-:doc:`fix_orient <fix_orient>`
+:doc:`fix_modify <fix_modify>`, :doc:`fix_orient <fix_orient>`
 
 Default
 """""""

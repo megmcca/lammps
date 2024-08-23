@@ -149,9 +149,7 @@ defined by the :doc:`dimension <dimension>` keyword.
 Related commands
 """"""""""""""""
 
-:doc:`fix nvt <fix_nh>`, :doc:`fix nve_sphere <fix_nve_sphere>`,
-     :doc:`fix nvt_asphere <fix_nvt_asphere>`, :doc:`fix npt_sphere
-     <fix_npt_sphere>`, :doc:`fix_modify <fix_modify>`
+:doc:`fix nvt <fix_nh>`, :doc:`fix nve_sphere <fix_nve_sphere>`, :doc:`fix nvt_asphere <fix_nvt_asphere>`, :doc:`fix npt_sphere <fix_npt_sphere>`, :doc:`fix_modify <fix_modify>`
 
 Default
 """""""

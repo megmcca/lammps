@@ -34,11 +34,11 @@ Description
 Perform a symplectic integration for the spin or spin-lattice system.
 
 The *lattice* keyword defines if the spins are integrated on a lattice
-of fixed atoms (lattice = frozen), or if atoms are moving
-(lattice = moving).
+of fixed atoms (*lattice* = frozen), or if atoms are moving
+(*lattice* = moving).
 The first case corresponds to a spin dynamics calculation, and
 the second to a spin-lattice calculation.
-By default a spin-lattice integration is performed (lattice = moving).
+By default a spin-lattice integration is performed (*lattice* = moving).
 
 The *nve/spin* fix applies a Suzuki-Trotter decomposition to
 the equations of motion of the spin lattice system, following the scheme:
@@ -62,7 +62,7 @@ package.  See the :doc:`Build package <Build_package>` page for more
 info.
 
 To use the spin algorithm, it is necessary to define a map with
-the atom_modify command. Typically, by adding the command:
+the :doc:`atom_modify <Build_package>` command:
 
 .. code-block:: LAMMPS
 
@@ -91,4 +91,4 @@ The option default is lattice = moving.
 .. _Tranchida1:
 
 **(Tranchida)** Tranchida, Plimpton, Thibaudeau and Thompson,
-Journal of Computational Physics, 372, 406-425, (2018).
+J. Comp. Phys., 372, 406-425, (2018).

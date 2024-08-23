@@ -34,8 +34,7 @@ Description
 """""""""""
 
 Perform constant NVT integration to update positions and velocities each
-timestep for nuclei and electrons in the group for the :doc:`electron
-force field <pair_eff>` model, using a Nose/Hoover temperature
+timestep for nuclei and electrons in the group for the electron Force Field (eFF) model as detailed in :doc:`pair_style eff <pair_eff>`, using a Nose/Hoover temperature
 thermostat.  V is volume; T is temperature.  This creates a system
 trajectory consistent with the canonical ensemble.
 

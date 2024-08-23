@@ -60,9 +60,9 @@ large x velocity.  These velocities do not contribute to the thermal
 
    :doc:`Fix deform <fix_deform>` has an option for remapping either
    atom coordinates or velocities to the changing simulation box.  To use
-   fix nvt/sllod, fix deform should NOT remap atom positions, because fix
+   fix nvt/sllod, `fix deform <fix_deform>` should NOT remap atom positions, because fix
    nvt/sllod adjusts the atom positions and velocities to create a
-   velocity profile that matches the changing box size/shape.  Fix deform
+   velocity profile that matches the changing box size/shape.  `Fix deform <fix_deform>`
    SHOULD remap atom velocities when atoms cross periodic boundaries
    since that is consistent with maintaining the velocity profile created
    by fix nvt/sllod.  LAMMPS will give an error if this setting is not
@@ -83,7 +83,7 @@ Morriss) <Evans3>`.  The option *psllod* = *yes* invokes the slightly
 different SLLOD variant first introduced by :ref:`(Tuckerman et al.)
 <Tuckerman>` as g-SLLOD and later by :ref:`(Edwards) <Edwards>` as
 p-SLLOD.  In all cases, the equations of motion are coupled to a
-Nose/Hoover chain thermostat in a velocity Verlet formulation, closely
+Nose/Hoover chain thermostat in a velocity-Verlet formulation, closely
 following the implementation used for the :doc:`fix nvt <fix_nh>`
 command.
 

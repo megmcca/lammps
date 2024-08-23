@@ -20,8 +20,8 @@ Syntax
 * dir = 0/1 for which crystal is used as reference
 * alat = fcc/bcc cubic lattice constant (distance units)
 * dE = energy added to each atom (energy units)
-* cutlo,cuthi = values between 0.0 and 1.0, cutlo < cuthi
-* file0,file1 = files that specify orientation of each grain
+* cutlo, cuthi = values between 0.0 and 1.0, cutlo < cuthi
+* file0, file1 = files that specify orientation of each grain
 
 Examples
 """"""""
@@ -42,21 +42,22 @@ described in :ref:`(Janssens) <Janssens>`. The adaptation to bcc crystals
 is described in :ref:`(Wicaksono1) <Wicaksono1>`. The computed force is only
 applied to atoms in the fix group.
 
-The basic idea is that atoms in one grain (on one side of the
-boundary) have a potential energy dE added to them.  Atoms in the
-other grain have 0.0 potential energy added.  Atoms near the boundary
+This fix is designed for simulations of two-grain
+systems (bicrystals), either with one grain boundary and free surfaces parallel to
+the boundary, or a system with periodic boundary conditions and two
+equal and opposite grain boundaries.  Atoms in one grain have a potential energy *dE* added to them.  Atoms in the other grain have 0.0 potential energy added.  Atoms near the boundary
 (whose neighbor environment is intermediate between the two grain
-orientations) have an energy between 0.0 and dE added.  This creates
+orientations) have an energy between 0.0 and *dE* added.  This creates
 an effective driving force to reduce the potential energy of atoms
 near the boundary by pushing them towards one of the grain
-orientations.  For dir = 1 and dE > 0, the boundary will thus move so
-that the grain described by file0 grows and the grain described by
-file1 shrinks.  Thus this fix is designed for simulations of two-grain
-systems, either with one grain boundary and free surfaces parallel to
-the boundary, or a system with periodic boundary conditions and two
-equal and opposite grain boundaries.  In either case, the entire
-system can displace during the simulation, and such motion should be
-accounted for in measuring the grain boundary velocity.
+orientations.  For *dir* = 1 and *dE* > 0, the boundary will thus move so
+that the grain described by *file0* grows and the grain described by
+*file1* shrinks.  
+
+.. note::
+   In either of the boundary setups described above, the entire
+   system can displace during the simulation (a.k.a. the "flying ice cube" problem).  This motion should be
+   accounted for in measuring the grain boundary velocity. Alternately, commands that constrain a system's center-of-mass such as :doc:`fix recenter <fix_recenter>` can also be applied with care.
 
 The potential energy added to atom I is given by these formulas
 
@@ -76,20 +77,20 @@ The potential energy added to atom I is given by these formulas
    \qquad \mathrm{ for }\qquad \xi_{\rm low} < \xi_{i} < \xi_{\rm high}  \quad \left(6\right) \\
          = & {\rm dE} \quad\qquad\qquad\qquad\textrm{ for } \qquad \xi_{\rm high} < \xi_{i}
 
-which are fully explained in :ref:`(Janssens) <Janssens>`.  For fcc crystals
-this order parameter Xi for atom I in equation (1) is a sum over the
+which are fully explained in :ref:`(Janssens) <Janssens>`.  For fcc crystals,
+this order parameter :math:`\xi_{i}` for atom *I* in equation (1) is a sum over the
 12 nearest neighbors of atom I. For bcc crystals it is the
-corresponding sum of the 8 nearest neighbors. Rj is the vector from
-atom I to its neighbor J, and RIj is a vector in the reference
-(perfect) crystal.  That is, if dir = 0/1, then RIj is a vector to an
-atom coord from file 0/1.  Equation (2) gives the expected value of
-the order parameter XiIJ in the other grain.  Hi and lo cutoffs are
+corresponding sum of the 8 nearest neighbors. The vector :math:`\R_j` is the vector from
+atom *I* to its neighbor *J*, and :math:`R_{j}^{I}` is a vector in the reference
+(perfect) crystal.  That is, if *dir* = 0/1, then :math:`R_{j}^{I}` is a vector to an
+atom coord from *file0* to *file1*.  Equation (2) gives the expected value of
+the order parameter :math:`\xi_{i}^{IJ}` in the other grain.  High and low cutoffs are
 defined in equations (3) and (4), using the input parameters *cutlo*
 and *cuthi* as thresholds to avoid adding grain boundary energy when
 the deviation in the order parameter from 0 or 1 is small (e.g. due to
 thermal fluctuations in a perfect crystal).  The added potential
-energy Ui for atom I is given in equation (6) where it is interpolated
-between 0 and dE using the two threshold Xi values and the Wi value of
+energy :math:`U_{i}` for atom I is given in equation (6) where it is interpolated
+between 0 and *dE* using the two threshold :math:`\xi_{i}` values and the :math:`\omega_{i}` value of
 equation (5).
 
 The derivative of this energy expression gives the force on each atom
@@ -101,7 +102,7 @@ In equation (1), the reference vector used for each neighbor is the
 reference vector closest to the actual neighbor position.  This means
 it is possible two different neighbors will use the same reference
 vector.  In such cases, the atom in question is far from a perfect
-orientation and will likely receive the full dE addition, so the
+orientation and will likely receive the full *dE* addition, so the
 effect of duplicate reference vector usage is small.
 
 The *dir* parameter determines which grain wants to grow at the
@@ -110,7 +111,7 @@ a value of 1 means it will grow.  This assumes that *dE* is positive.
 The reverse will be true if *dE* is negative.
 
 The *alat* parameter is the cubic lattice constant for the fcc or bcc
-material and is only used to compute a cutoff distance of 1.57 \* alat
+material and is only used to compute a cutoff distance of 1.57 \* *alat*
 / sqrt(2) for finding the 12 or 8 nearest neighbors of each atom
 (which should be valid for an fcc or bcc crystal).  A longer/shorter
 cutoff can be imposed by adjusting *alat*\ .  If a particular atom has
@@ -130,7 +131,7 @@ parameters to be greater than 0 or less than 1.  The cutoff parameters
 mask this effect, allowing forces to only be added to atoms with
 order-parameters between the cutoff values.
 
-*File0* and *file1* are filenames for the two grains which each
+Parameters *file0* and *file1* are filenames for the two grains which each
 contain 6 vectors (6 lines with 3 values per line) which specify the
 grain orientations.  Each vector is a displacement from a central atom
 (0,0,0) to a nearest neighbor atom in an fcc lattice at the proper
@@ -138,7 +139,7 @@ orientation.  The vector lengths should all be identical since an fcc
 lattice has a coordination number of 12.  Only 6 are listed due to
 symmetry, so the list must include one from each pair of
 equal-and-opposite neighbors.  A pair of orientation files for a
-Sigma=5 tilt boundary are shown below. A tutorial that can help for
+:math:`\Sigma=5 \langle 001 \rangle` tilt boundary are shown below. A tutorial that can help for
 writing the orientation files is given in :ref:`(Wicaksono2) <Wicaksono2>`
 
 Restart, fix_modify, output, run start/stop, minimize info
@@ -186,7 +187,7 @@ These fixes should only be used with fcc or bcc lattices.
 Related commands
 """"""""""""""""
 
-:doc:`fix_modify <fix_modify>`
+:doc:`fix_modify <fix_modify>`, :doc:`fix orient/eco <fix_orient_eco>`
 
 Default
 """""""
@@ -213,10 +214,9 @@ https://doi.org/10.6084/m9.figshare.1488628.v1 (2015).
 ----------
 
 For illustration purposes, here are example files that specify a
-Sigma=5 <100> tilt boundary.  This is for a lattice constant of 3.5706
-Angs.
+:math:`\Sigma=5 \langle 001 \rangle` tilt boundary.  This is for a lattice constant of 3.5706 Angstroms.
 
-file0:
+*file0*\ :
 
 .. parsed-literal::
 
@@ -227,7 +227,7 @@ file0:
         1.596820864092150    1.785300000000000   -0.798410432046075
         1.596820864092150   -1.785300000000000   -0.798410432046075
 
-file1:
+*file1*\ :
 
 .. parsed-literal::
 
