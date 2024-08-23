@@ -40,7 +40,7 @@ Description
 """""""""""
 
 Perform constant NPT integration to update position, velocity, and
-angular velocity each timestep for finite-sizex spherical particles in
+angular velocity each timestep for finite-size spherical particles in
 the group using a Nose/Hoover temperature thermostat and Nose/Hoover
 pressure barostat.  P is pressure; T is temperature.  This creates a
 system trajectory consistent with the isothermal-isobaric ensemble.

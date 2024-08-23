@@ -37,9 +37,9 @@ Description
 
 Perform constant NVE integration to update position and velocity for
 atoms constrained to a curved surface (manifold) in the group each
-timestep. The constraint is handled by RATTLE :ref:`(Andersen) <Andersen1>`
-written out for the special case of single-particle constraints as
-explained in :ref:`(Paquay) <Paquay2>`.  V is volume; E is energy. This way,
+timestep. V is volume; E is energy. The constraint is handled by the RATTLE algorithm, outlined in :ref:`(Andersen) <Andersen1>`. 
+Here, it is written out for the special case of single-particle constraints as
+explained in :ref:`(Paquay) <Paquay2>`.  This way,
 the dynamics of particles constrained to curved surfaces can be
 studied. If combined with :doc:`fix langevin <fix_langevin>`, this
 generates Brownian motion of particles constrained to a curved

@@ -51,8 +51,7 @@ over the standard integrator, permitting slightly larger timestep sizes.
 
 .. note::
 
-   Unlike the :doc:`fix langevin <fix_langevin>` this command performs
-   also time integration of the translational and quaternion degrees of freedom.
+   Unlike the :doc:`fix langevin <fix_langevin>` this command also performs time integration of the translational and quaternion degrees of freedom.
 
 The total force on each atom will have the form:
 
@@ -87,9 +86,9 @@ number) for speed.
 ----------
 
 *Tstart* and *Tstop* have to be constant values, i.e. they cannot
-be variables. If used together with the oxDNA force field for
+be variables. If used together with an oxDNA-style force field (see :doc:`pair_style oxdna <pair_style_odna>` or :doc:`pair_style oxdna2 <pair_style_odna2>`) for
 coarse-grained simulation of DNA please note that T = 0.1 in oxDNA units
-corresponds to T = 300 K.
+corresponds to T = 300 K. 
 
 The *damp* parameter is specified in time units and determines how
 rapidly the temperature is relaxed.  For example, a value of 0.03
@@ -104,8 +103,8 @@ to a diffusion constant, which is about an order of magnitude larger
 than realistic ones. This has been used to sample configurations faster
 in Brownian dynamics simulations.
 
-The random # *seed* must be a positive integer. A Marsaglia random
-number generator is used.  Each processor uses the input seed to
+The *seed* parameter must be a positive integer and is used as input to a Marsaglia random
+number generator.  Each processor uses the input seed to
 generate its own unique seed and its own stream of random numbers.
 Thus the dynamics of the system will not be identical on two runs on
 different numbers of processors.

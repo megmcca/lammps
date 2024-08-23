@@ -24,7 +24,7 @@ Description
 """""""""""
 
 Perform constant NVE integration to update position and velocity for
-nuclei and electrons in the group for the :doc:`electron force field <pair_eff>` model.  V is volume; E is energy.  This creates a
+nuclei and electrons in the group for the electron Force Field model, implemented in  :doc:`pair_style eff/cut <pair_eff>`.  V is volume; E is energy.  This creates a
 system trajectory consistent with the microcanonical ensemble.
 
 The operation of this fix is exactly like that described by the :doc:`fix nve <fix_nve>` command, except that the radius and radial velocity

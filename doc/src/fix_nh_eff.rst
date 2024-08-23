@@ -86,26 +86,36 @@ to the temperature or kinetic energy from the electron radial velocity.
 
 .. note::
 
-   there are two different pressures that can be reported for eFF
+   There are two different pressures that can be reported for eFF
    when defining the pair_style (see :doc:`pair eff/cut <pair_eff>` to
-   understand these settings), one (default) that considers electrons do
-   not contribute radial virial components (i.e. electrons treated as
-   incompressible 'rigid' spheres) and one that does.  The radial
+   understand these settings), one (default) that allows electrons to contribute radial virial components (i.e., electrons are treated as
+   incompressible 'rigid' spheres) and one that does not.  The radial
    electronic contributions to the virials are only tallied if the
    flexible pressure option is set, and this will affect both global and
    per-atom quantities.  In principle, the true pressure of a system is
    somewhere in between the rigid and the flexible eFF pressures, but,
    for most cases, the difference between these two pressures will not be
-   significant over long-term averaged runs (i.e. even though the energy
+   significant over long-term averaged runs (i.e., even though the energy
    partitioning changes, the total energy remains similar).
 
 .. note::
 
-   currently, there is no available option for the user to set or
+   Currently, there is no available option for the user to set or
    create temperature distributions that include the radial electronic
    degrees of freedom with the :doc:`velocity <velocity>` command, so the
    the user must allow for these degrees of freedom to equilibrate
    (i.e. equi-partitioning of energy) through time integration.
+   
+.. note::
+
+   The temperature for systems (regions or groups) with only
+   electrons and no nuclei is 0.0 (i.e. not defined) in the current
+   temperature calculations. A practical example would be a uniform
+   electron gas or a very hot plasma, where electrons remain delocalized
+   from the nuclei.  This is because, even though electron virials are
+   included in the temperature calculation, these are averaged over the
+   nuclear degrees of freedom only.  In such cases, a corrective term must
+   be added to the pressure to get the correct kinetic contribution.
 
 Restart, fix_modify, output, run start/stop, minimize info
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -119,18 +129,8 @@ Restrictions
 This fix is part of the EFF package.  It is only enabled if
 LAMMPS was built with that package.  See the :doc:`Build package <Build_package>` page for more info.
 
-Other restriction discussed on the page for the :doc:`fix nvt, npt, and nph <fix_nh>` commands also apply.
+Other restrictions discussed on the page for the :doc:`fix nvt, npt, and nph <fix_nh>` commands also apply.
 
-.. note::
-
-   The temperature for systems (regions or groups) with only
-   electrons and no nuclei is 0.0 (i.e. not defined) in the current
-   temperature calculations, a practical example would be a uniform
-   electron gas or a very hot plasma, where electrons remain delocalized
-   from the nuclei.  This is because, even though electron virials are
-   included in the temperature calculation, these are averaged over the
-   nuclear degrees of freedom only.  In such cases a corrective term must
-   be added to the pressure to get the correct kinetic contribution.
 
 Related commands
 """"""""""""""""

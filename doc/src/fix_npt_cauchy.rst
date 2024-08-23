@@ -78,16 +78,16 @@ dimensions. The external pressure of the barostat can be specified as
 either a scalar pressure (isobaric ensemble) or as components of a
 symmetric stress tensor (constant stress ensemble).  When used
 correctly, the time-averaged temperature and stress tensor of the
-particles will match the target values specified by Tstart/Tstop and
-Pstart/Pstop.
+particles will match the target values specified by *Tstart*/\ *Tstop*  and
+*Pstart*/\ *Pstop*.
 
-The equations of motion used are those of Shinoda et al in
+The equations of motion used are those of Shinoda et al. in
 :ref:`(Shinoda) <nc-Shinoda>`, which combine the hydrostatic equations of
 Martyna, Tobias and Klein in :ref:`(Martyna) <nc-Martyna>` with the strain
 energy proposed by Parrinello and Rahman in
 :ref:`(Parrinello) <nc-Parrinello>`.  The time integration schemes closely
 follow the time-reversible measure-preserving Verlet and rRESPA
-integrators derived by Tuckerman et al in :ref:`(Tuckerman) <nc-Tuckerman>`.
+integrators derived by Tuckerman et al. in :ref:`(Tuckerman) <nc-Tuckerman>`.
 
 ----------
 
@@ -444,7 +444,7 @@ according to the following factorization of the Liouville propagator
    \exp \left(\mathrm{i} L_{\rm T\textrm{-}baro} \frac{\Delta t}{2} \right) \\
    &+ \mathcal{O} \left(\Delta t^3 \right)
 
-This factorization differs somewhat from that of Tuckerman et al, in
+This factorization differs somewhat from that of Tuckerman et al., in
 that the barostat is only updated at the outermost rRESPA level,
 whereas Tuckerman's factorization requires splitting the pressure into
 pieces corresponding to the forces computed at each rRESPA level. In
@@ -510,7 +510,7 @@ cumulative energy change due to this fix described in the previous
 paragraph.  The scalar value calculated by this fix is "extensive".
 
 This fix also computes a global vector of quantities, which can be
-accessed by various :doc:`output commands <Howto_output>`.  Rhe vector
+accessed by various :doc:`output commands <Howto_output>`.  The vector
 values are "intensive".
 
 The vector stores internal Nose/Hoover thermostat and barostat
@@ -558,10 +558,10 @@ Restrictions
 This fix is part of the EXTRA-FIX package.  It is only enabled if
 LAMMPS was built with that package.  See the :doc:`Build package <Build_package>` page for more info.
 
-*X*, *y*, *z* cannot be barostatted if the associated dimension is not
-periodic.  *Xy*, *xz*, and *yz* can only be barostatted if the
+The keywords *x*, *y*, *z* cannot be barostatted if the associated dimension is not
+periodic.  The keywords *xy*, *xz*, and *yz* can only be barostatted if the
 simulation domain is triclinic and the second dimension in the keyword
-(\ *y* dimension in *xy*\ ) is periodic.  *Z*, *xz*, and *yz*, cannot be
+(\ *y* dimension in *xy*\ ) is periodic.  The keywords *z*, *xz*, and *yz*, cannot be
 barostatted for 2D simulations.  The :doc:`create_box <create_box>`,
 :doc:`read data <read_data>`, and :doc:`read_restart <read_restart>`
 commands specify whether the simulation box is orthogonal or

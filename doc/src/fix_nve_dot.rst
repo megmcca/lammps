@@ -25,7 +25,7 @@ Description
 
 Apply a rigid-body integrator as described in :ref:`(Davidchack) <Davidchack4>`
 to a group of atoms, but without Langevin dynamics.
-This command performs Molecular dynamics (MD)
+This command performs molecular dynamics (MD)
 via a velocity-Verlet algorithm and an evolution operator that rotates
 the quaternion degrees of freedom, similar to the scheme outlined in :ref:`(Miller) <Miller4>`.
 
