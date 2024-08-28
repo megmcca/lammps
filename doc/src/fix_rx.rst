@@ -194,8 +194,9 @@ reading directly the concentrations from a data file.  For the latter
 case, the :doc:`read_data <read_data>` command with the fix keyword
 should be specified, where the fix-ID will be the "fix rx`ID with a <SPECIES">`_ suffix, e.g.
 
-fix          foo all rx reaction.file ...
-read_data    data.dpd fix foo_SPECIES NULL Species
+.. parsed-literal::
+   fix          foo all rx reaction.file ...
+   read_data    data.dpd fix foo_SPECIES NULL Species
 
 ----------
 

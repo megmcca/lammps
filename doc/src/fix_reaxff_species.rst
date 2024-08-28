@@ -145,8 +145,9 @@ specific chemical species to be deleted.  The *Nspecies* argument specifies
 how many species are eligible for deletion and is followed by a list of
 chemical formulae, whose strings are compared to species identified by this
 fix.  For example, "specieslist 2 CO CO2" deletes molecules that are
-identified as "CO" and "CO2" in the species output file.  When using the
-*specieslist* keyword, the *filedel* file has the following format: the
+identified as "CO" and "CO2" in the species output file.  
+
+When using the *specieslist* keyword, the *filedel* file has the following format: the
 first line lists the chemical formulae eligible for deletion, and each
 additional line contains the timestep on which a molecule deletion occurs
 and the number of each species deleted on that timestep.  The *masslimit*
@@ -155,8 +156,9 @@ keyword permits deletion of molecules with molecular weights between
 the *filedel* file contains the timestep on which deletions occurs,
 followed by how many of each species are deleted (with quantities preceding
 chemical formulae).  The *specieslist* and *masslimit* keywords cannot both
-be used in the same *reaxff/species* fix.  The *delete_rate_limit* keyword
-can enforce an upper limit on the overall rate of molecule deletion.  The
+be used in the same *reaxff/species* fix.  
+
+The *delete_rate_limit* keyword can enforce an upper limit on the overall rate of molecule deletion.  The
 number of deletion occurrences is limited to Nlimit within an interval of
 Nsteps timesteps.  Nlimit can be specified with an equal-style
 :doc:`variable <variable>`.  When using the *delete_rate_limit* keyword, no
@@ -176,8 +178,8 @@ Also, the timesteps
 contributing to the average bond-order cannot overlap,
 i.e. Nrepeat\*Nevery can not exceed Nfreq.
 
-For example, if Nevery=2, Nrepeat=6, and Nfreq=100, then bond-order
-values on timesteps 90,92,94,96,98,100 will be used to compute the
+For example, if *Nevery* = 2, *Nrepeat* = 6, and *Nfreq* = 100, then bond-order
+values on timesteps 90, 92, 94, 96, 98, 100 will be used to compute the
 average bond-order for the species analysis output on timestep 100.
 
 ----------
@@ -205,6 +207,7 @@ any atom in the molecule.
 
 No parameter of this fix can be used with the *start/stop* keywords of
 the :doc:`run <run>` command.
+
 This fix is not invoked during :doc:`energy minimization <minimize>`.
 
 ----------

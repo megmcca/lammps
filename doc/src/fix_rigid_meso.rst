@@ -201,8 +201,6 @@ expensive.
 
 ----------
 
-The keyword/value option pairs are used in the following ways.
-
 The *reinit* keyword determines, whether the rigid body properties
 are re-initialized between run commands. With the option *yes* (the
 default) this is done, with the option *no* this is not done. Turning
@@ -210,8 +208,6 @@ off the re-initialization can be helpful to protect rigid bodies against
 unphysical manipulations between runs or when properties cannot be
 easily re-computed (e.g. when read from a file). When using the *infile*
 keyword, the *reinit* option is automatically set to *no*\ .
-
-----------
 
 The *infile* keyword allows a file of rigid body attributes to be read
 in from a file, rather then having LAMMPS compute them.  There are 5
@@ -285,8 +281,6 @@ cross periodic boundaries during the simulation.
    using an *infile* keyword and the appropriate filename.  Note that the
    auxiliary file will contain one line for every rigid body, even if the
    original file only listed a subset of the rigid bodies.
-
-----------
 
 Restart, fix_modify, output, run start/stop, minimize info
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""

@@ -171,7 +171,7 @@ Examples of large rigid bodies are a colloidal particle, or portions
 of a biomolecule such as a protein.
 
 Example of small rigid bodies are patchy nanoparticles, such as those
-modeled in :ref:`this paper <Zhang1>` by Sharon Glotzer's group,
+modeled in (:ref:`Zhang <Zhang1>`),
 clumps of granular particles, lipid molecules consisting of one or
 more point dipoles connected to other spheroids or ellipsoids,
 irregular particles built from line segments (2d) or triangles (3d),

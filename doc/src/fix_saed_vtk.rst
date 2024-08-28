@@ -19,7 +19,7 @@ Syntax
 
   .. parsed-literal::
 
-     keyword = *file* or *ave* or *start* or *file* or *overwrite*\ :l
+     keyword = *ave* or *start* or *file* or *overwrite*\ :l
        *ave* args = *one* or *running* or *window M*
          one = output a new average value every Nfreq steps
          running = output cumulative average of all previous Nfreq steps
@@ -51,7 +51,7 @@ command can be used as a convenient way to simply output diffraction
 intensities at a single snapshot.
 
 To produce output in the image data vtk format ghost data is added
-outside the *Kmax* range assigned in the compute saed. The ghost data is
+outside the *Kmax* range assigned in :doc:`compute saed <compute_saed>`. The ghost data is
 assigned a value of -1 and can be removed setting a minimum isovolume
 of 0 within the visualization software. SAED images can be created by
 visualizing a spherical slice of the data that is centered at
@@ -82,12 +82,12 @@ Also, the timesteps
 contributing to the average value cannot overlap,
 i.e. Nrepeat\*Nevery can not exceed Nfreq.
 
-For example, if Nevery=2, Nrepeat=6, and Nfreq=100, then values on
-timesteps 90,92,94,96,98,100 will be used to compute the final average
-on timestep 100.  Similarly for timesteps 190,192,194,196,198,200 on
-timestep 200, etc.  If Nrepeat=1 and Nfreq = 100, then no time
+For example, if *Nevery* = 2, *Nrepeat* = 6, and *Nfreq* = 100, then values on
+timesteps 90, 92, 94, 96, 98, 100 will be used to compute the final average
+on timestep 100.  Similarly for timesteps 190, 192, 194, 196, 198, 200 on
+timestep 200, etc.  If *Nrepeat* = 1 and *Nfreq* = 100, then no time
 averaging is done; values are simply generated on timesteps
-100,200,etc.
+100, 200, etc.
 
 ----------
 
