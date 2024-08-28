@@ -58,7 +58,7 @@ physical charges in the system (such as atoms and charged particles)
 these fixes compute and update the charge of the interface
 particles. The interfaces are allowed to move during the simulation if
 the appropriate time integrators are also set (for example, with
-:doc:`fix_rigid <fix_rigid>`).
+:doc:`fix rigid <fix_rigid>`).
 
 Consider an interface between two media: one with dielectric constant of
 78 (water), the other of 4 (silica). The interface is discretized into

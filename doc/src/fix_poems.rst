@@ -43,15 +43,15 @@ performed by the software package `Parallelizable Open source
 Efficient Multibody Software (POEMS)` which computes the constrained
 rigid-body motion of articulated (jointed) multibody systems
 :ref:`(Anderson) <Anderson>`.  POEMS was written and is distributed by
-Prof Kurt Anderson, his graduate student Rudranarayan Mukherjee, and
+Professor Kurt Anderson, his graduate student Rudranarayan Mukherjee, and
 other members of his group at Rensselaer Polytechnic Institute (RPI).
 Rudranarayan developed the LAMMPS/POEMS interface.  For copyright
 information on POEMS and other details, please refer to the documents
-in the poems directory distributed with LAMMPS.
+in the lib/poems directory distributed with LAMMPS.
 
 This fix updates the positions and velocities of the rigid atoms with
 a constant-energy time integration, so you should not update the same
-atoms via other fixes (e.g. nve, nvt, npt, temp/rescale, langevin).
+atoms via other fixes (e.g. :doc:`fix nve, nvt, or npt <fix_nh>`, :doc:`fix temp/rescale <fix_temp_rescale>`, :doc:`fix langevin <fix_langevin>`).
 
 Each body must have a non-degenerate inertia tensor, which means if
 must contain at least 3 non-collinear atoms.  Which atoms are in which
@@ -68,7 +68,9 @@ For option *file*, sets of atoms are read from the specified file and
 each set is treated as a rigid body.  Each line of the file specifies
 a rigid body in the following format:
 
-ID type atom1-ID atom2-ID atom3-ID ...
+  .. parsed-literal::
+   
+   ID type atom1-ID atom2-ID atom3-ID ...
 
 ID as an integer from 1 to M (the number of rigid bodies).  Type is
 any integer; it is not used by the fix poems command.  The remaining
@@ -92,7 +94,7 @@ this context means a set of rigid bodies connected by joints.
 
 For computational efficiency, you should turn off pairwise and bond
 interactions within each rigid body, as they no longer contribute to
-the motion.  The "neigh_modify exclude" and "delete_bonds" commands
+the motion.  The :doc:`neigh_modify <neigh_modify>` *exclude* and :doc:`delete_bonds <delete_bonds>` commands
 can be used to do this if each rigid body is a group.
 
 For computational efficiency, you should only define one fix poems
@@ -142,7 +144,7 @@ Related commands
 """"""""""""""""
 
 :doc:`fix rigid <fix_rigid>`, :doc:`delete_bonds <delete_bonds>`,
-:doc:`neigh_modify <neigh_modify>` exclude
+:doc:`neigh_modify <neigh_modify>` *exclude*
 
 Default
 """""""

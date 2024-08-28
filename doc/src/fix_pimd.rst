@@ -104,37 +104,37 @@ freedom for each quasi-bead.  The keyword *temp* sets the target
 temperature for the system and the keyword *nhc* sets the number *Nc* of
 thermostats in each chain.  For example, for a simulation of N particles
 with P beads in each ring-polymer, the total number of NH thermostats
-would be 3 x N x P x Nc.
+would be 3 x N x P x *Nc*.
 
 Fix *pimd/langevin* implements a Langevin thermostat in the normal mode
 representation, and also provides a barostat to sample the NPH/NPT ensembles.
 
 .. note::
 
-   Both these *fix* styles implement a complete velocity-verlet integrator
+   Both these *fix* styles implement a complete velocity-Verlet integrator
    combined with a thermostat, so no other time integration fix should be used.
 
 The *method* keyword determines what style of PIMD is performed.  A
 value of *pimd* is standard PIMD.  A value of *nmpimd* is for
 normal-mode PIMD.  A value of *cmd* is for centroid molecular dynamics
-(CMD).  The difference between the styles is as follows.
+(CMD).  The difference between the styles is in the following two paragraphs.
 
-   In standard PIMD, the value used for a bead's fictitious mass is
-   arbitrary.  A common choice is to use :math:`M_i = m/P`, which results in the
-   mass of the entire ring-polymer being equal to the real quantum
-   particle.  But it can be difficult to efficiently integrate the
-   equations of motion for the stiff harmonic interactions in the ring
-   polymers.
+In standard PIMD, the value used for a bead's fictitious mass is
+arbitrary.  A common choice is to use :math:`M_i = m/P`, which results in the
+mass of the entire ring-polymer being equal to the real quantum
+particle.  But it can be difficult to efficiently integrate the
+equations of motion for the stiff harmonic interactions in the ring
+polymers.
 
-   A useful way to resolve this issue is to integrate the equations of
-   motion in a normal mode representation, using Normal Mode
-   Path-Integral Molecular Dynamics (NMPIMD) :ref:`(Cao1) <Cao1>`.  In
-   NMPIMD, the NH chains are attached to each normal mode of the
-   ring-polymer and the fictitious mass of each mode is chosen as Mk =
-   the eigenvalue of the Kth normal mode for k > 0. The k = 0 mode,
-   referred to as the zero-frequency mode or centroid, corresponds to
-   overall translation of the ring-polymer and is assigned the mass of
-   the real particle.
+A useful way to resolve this issue is to integrate the equations of
+motion in a normal mode representation, using Normal Mode
+Path-Integral Molecular Dynamics (NMPIMD) :ref:`(Cao1) <Cao1>`.  In
+NMPIMD, the NH chains are attached to each normal mode of the
+ring-polymer and the fictitious mass of each mode is chosen as Mk =
+the eigenvalue of the Kth normal mode for k > 0. The k = 0 mode,
+referred to as the zero-frequency mode or centroid, corresponds to
+overall translation of the ring-polymer and is assigned the mass of
+the real particle.
 
 .. note::
 
@@ -208,8 +208,8 @@ a positive floating-point number.
 
 .. note::
 
-   For pimd simulations, a temperature values should be specified even for nve ensemble. Temperature will make a difference
-   for nve pimd, since the spring elastic frequency between the beads will be affected by the temperature.
+   For PIMP simulations, a temperature values should be specified even for the NVE ensemble. Temperature will make a difference
+   for *pimd/nve*, since the spring elastic frequency between the beads will be affected by the temperature.
 
 The keyword *thermostat* reads *style* and *seed* of thermostat for fix style *pimd/langevin*. *style* can only
 be *PILE_L* (path integral Langevin equation local thermostat, as described in :ref:`Ceriotti <Ceriotti2>`), and *seed* should a positive integer number, which serves as the seed of the pseudo random number generator.
@@ -233,7 +233,7 @@ be *BZP* (Bussi-Zykova-Parrinello, as described in :ref:`Bussi <Bussi>`) or *MTT
 The keyword *taup* specifies the barostat damping time parameter for fix style *pimd/langevin*. It is in time unit.
 
 The keyword *fixcom* specifies whether the center-of-mass of the extended ring-polymer system is fixed during the pimd simulation.
-Once *fixcom* is set to be *yes*, the center-of-mass velocity will be distracted from the centroid-mode velocities in each step.
+Once *fixcom* is set to be *yes*, the center-of-mass velocity will be subtracted from the centroid-mode velocities in each step.
 
 The keyword *lj* should be used if :doc:`lj units <units>` is used for *fix pimd/langevin*. Typically one may want to use
 reduced units to run the simulation, and then convert the results into some physical units (for example, :doc:`metal units <units>`). In this case, the 5 quantities in the physical mass units are needed: epsilon (energy scale), sigma (length scale), mass, Planck's constant, mvv2e (mass * velocity^2 to energy conversion factor). Planck's constant and mvv2e can be found in src/update.cpp. If there is no need to convert reduced units to physical units, you can omit the keyword *lj* and these five values will be set to 1.

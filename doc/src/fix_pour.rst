@@ -86,7 +86,7 @@ the inserted molecule is specified in the file read by the
 :doc:`molecule <molecule>` command, and those values are added to the
 specified atom type.  E.g. if the file specifies atom types 1,2,3, and
 those are the atom types you want for inserted molecules, then specify
-*type* = 0.  If you specify *type* = 2, the in the inserted molecule
+*type* = 0.  If you specify *type* = 2, the inserted molecule
 will have atom types 3,4,5.
 
 All atoms in the inserted particle are assigned to two groups: the
@@ -255,7 +255,7 @@ Restrictions
 """"""""""""
 
 This fix is part of the GRANULAR package.  It is only enabled if
-LAMMPS was built with that package.  See the :doc:`Build package <Build_package>` page for more info.
+LAMMPS was built with that package.  Using this fix with the *shake* keyword also requires building the RIGID package. See the :doc:`Build package <Build_package>` page for more info.
 
 For 3d simulations, a gravity fix in the -z direction must be defined
 for use in conjunction with this fix.  For 2d simulations, gravity
@@ -263,6 +263,7 @@ must be defined in the -y direction.
 
 The specified insertion region cannot be a "dynamic" region, as
 defined by the :doc:`region <region>` command.
+
 
 Related commands
 """"""""""""""""

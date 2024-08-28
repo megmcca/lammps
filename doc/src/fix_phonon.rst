@@ -23,9 +23,7 @@ Syntax
 
   .. parsed-literal::
 
-       *GAMMA* flags to treate the whole simulation box as a unit cell, so that the mapping
-       info can be generated internally. In this case, dynamical matrix at only the gamma-point
-       will/can be evaluated.
+       *GAMMA* flags to treate the whole simulation box as a unit cell, so that the mapping info can be generated internally. In this case, dynamical matrix at only the gamma-point will/can be evaluated.
 
 * prefix = prefix for output files
 * one or none keyword/value pairs may be appended
@@ -60,8 +58,8 @@ defined by three linearly independent vectors :math:`\mathbf{a}_1`,
 containing :math:`K` basis atoms labeled :math:`k`.
 
 Based on fluctuation-dissipation theory, the force constant
-coefficients of the system in reciprocal space are given by
-(:ref:`Campana <Campana>` , :ref:`Kong <Kong>`)
+coefficients of the system in reciprocal space, :math:`\mathbf{\Phi}`, are given by
+(:ref:`Campana <Campana>` , :ref:`Kong1 <Kong1>`)
 
 .. math::
 
@@ -116,8 +114,8 @@ then constructed and written to *prefix*\ .bin.timestep files in binary
 format and to the file *prefix*\ .log for each wave-vector
 :math:`\mathbf{q}`.
 
-A detailed description of this method can be found in
-(:ref:`Kong2011 <Kong2011>`).
+Detailed descriptions of this method can be found in
+(:ref:`Kong2 <Kong2>`) and (:ref:`Kong3 <Kong3>`).
 
 The *sysdim* keyword is optional.  If specified with a value smaller
 than the dimensionality of the LAMMPS simulation, its value is used
@@ -143,7 +141,7 @@ that the mapping info will be generated internally and a file is not
 needed. In this case, the dynamical matrix at only the gamma-point
 will/can be evaluated. Please keep in mind that fix-phonon is designed
 for cyrstals, it will be inefficient and even degrade the performance
-of LAMMPS in case the unit cell is too large.
+of LAMMPS in cases where the unit cell is too large.
 
 The calculated dynamical matrix elements are written out in
 :doc:`energy/distance\^2/mass <units>` units.  The coordinates for *q*
@@ -206,17 +204,19 @@ the :doc:`dimension <dimension>` command, and nasr = 20.
 M. H. Muser, *Practical Green's function approach to the
 simulation of elastic semi-infinite solids*, `Phys. Rev. B [74], 075420 (2006) <https://doi.org/10.1103/PhysRevB.74.075420>`_
 
-.. _Kong:
+.. _Kong1:
 
-**(Kong)** L.T. Kong, G. Bartels, C. Campana,
+**(Kong1)** L.T. Kong, G. Bartels, C. Campana,
 C. Denniston, and Martin H. Muser, *Implementation of Green's
 function molecular dynamics: An extension to LAMMPS*, `Computer Physics Communications [180](6):1004-1010 (2009). <https://doi.org/10.1016/j.cpc.2008.12.035>`_
 
-L.T. Kong, C. Denniston, and Martin H. Muser,
+.. _Kong2:
+
+**(Kong2)** L.T. Kong, C. Denniston, and Martin H. Muser,
 *An improved version of the Green's function molecular dynamics
 method*, `Computer Physics Communications [182](2):540-541 (2011). <https://doi.org/10.1016/j.cpc.2010.10.006>`_
 
-.. _Kong2011:
+.. _Kong3:
 
-**(Kong2011)** L.T. Kong, *Phonon dispersion measured directly from
+**(Kong3)** L.T. Kong, *Phonon dispersion measured directly from
 molecular dynamics simulations*, `Computer Physics Communications [182](10):2201-2207, (2011). <https://doi.org/10.1016/j.cpc.2011.04.019>`_

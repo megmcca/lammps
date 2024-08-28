@@ -40,7 +40,7 @@ Description
 
 Reset the pressure of the system by using a Berendsen barostat
 :ref:`(Berendsen) <Berendsen1>`, which rescales the system volume and
-(optionally) the atoms coordinates within the simulation box every
+(optionally) atom coordinates within the simulation box every
 timestep.
 
 Regardless of what atoms are in the fix group, a global pressure is
@@ -61,8 +61,8 @@ unchanged and controlling the pressure of a surrounding fluid.
    atoms.  This fix can be used in conjunction with thermostatting fixes
    to control the temperature, such as :doc:`fix nvt <fix_nh>` or :doc:`fix langevin <fix_langevin>` or :doc:`fix temp/berendsen <fix_temp_berendsen>`.
 
-See the :doc:`Howto barostat <Howto_barostat>` page for a
-discussion of different ways to perform barostatting.
+   See the :doc:`Howto barostat <Howto_barostat>` page for a
+   discussion of different ways to perform barostatting.
 
 ----------
 
@@ -120,8 +120,6 @@ means to relax the pressure in a timespan of (roughly) 10 time units
    too small for solids.  Thus you should experiment to find appropriate
    values of *Pdamp* and/or the *modulus* when using this fix.
 
-----------
-
 The *couple* keyword allows two or three of the diagonal components of
 the pressure tensor to be "coupled" together.  The value specified
 with the keyword determines which are coupled.  For example, *xz*
@@ -134,8 +132,6 @@ dilated or contracted by the same percentage every timestep.  The
 *Pstart*, *Pstop*, *Pdamp* parameters for any coupled dimensions must
 be identical.  *Couple xyz* can be used for a 2d simulation; the *z*
 dimension is simply ignored.
-
-----------
 
 The *iso* and *aniso* keywords are simply shortcuts that are
 equivalent to specifying several other keywords together.
@@ -164,8 +160,6 @@ these 4 keywords:
    y Pstart Pstop Pdamp
    z Pstart Pstop Pdamp
    couple none
-
-----------
 
 This fix computes a temperature and pressure each timestep.  To do
 this, the fix creates its own computes of style "temp" and "pressure",
