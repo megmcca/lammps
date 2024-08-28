@@ -51,7 +51,7 @@ or at the end of every N time steps.
 
 Callback functions must be declared in the global scope of the
 active Python interpreter. This can either be done by defining it
-inline using the python command or by importing functions from other
+inline using the :doc:`python command <python>` or by importing functions from other
 Python modules. If LAMMPS is driven using the library interface from
 Python, functions defined in the driving Python interpreter can also
 be executed.

@@ -147,8 +147,7 @@ usually a good number.
 The *qeq/shielded* style describes partial charges on atoms also as
 point charges, but uses a shielded Coulomb potential to describe the
 interaction between a pair of charged particles.  Interaction through
-the shielded Coulomb is given by equation (13) of the :ref:`ReaxFF force
-field <vanDuin>` paper.  The shielding accounts for charge overlap
+the shielded Coulomb is given by equation (13) of the paper describing the ReaxFF force field (:ref:`van Duin <vanDuin>`).  The shielding accounts for charge overlap
 between charged particles at small separation.  This style is the same
 as :doc:`fix qeq/reaxff <fix_qeq_reaxff>`, and can be used with
 :doc:`pair_style reaxff <pair_reaxff>`.  Only the *chi*, *eta*, and
@@ -180,7 +179,7 @@ is too weak.  A tolerance of 1.0e-3 is usually a good number.  Keyword
 *qdamp* can be used to change the damping factor, while keyword *qstep*
 can be used to change the time step size.
 
-The :ref:`\ *qeq/fire*\ <Shan>` style describes the same charge model
+The *qeq/fire* (:ref:`Shan <Shan>`) style describes the same charge model
 and charge solver as the *qeq/dynamic* style, but employs a FIRE
 minimization algorithm to solve for equilibrium charges.  Keyword
 *qdamp* can be used to change the damping factor, while keyword *qstep*
@@ -268,9 +267,9 @@ Chemistry, 95, 3358-3363 (1991).
 
 .. _vanDuin:
 
-**(ReaxFF)** A. C. T. van Duin, S. Dasgupta, F. Lorant, W. A. Goddard III, J
+**(van Duin)** A. C. T. van Duin, S. Dasgupta, F. Lorant, W. A. Goddard III, J
 Physical Chemistry, 105, 9396-9049 (2001)
 
 .. _Shan:
 
-**(QEq/Fire)** T.-R. Shan, A. P. Thompson, S. J. Plimpton, in preparation
+**(Shan)** T.-R. Shan, A. P. Thompson, S. J. Plimpton, in preparation

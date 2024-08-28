@@ -142,8 +142,6 @@ For all pressure styles, the simulation box stays orthorhombic in
 shape. Parrinello-Rahman boundary conditions (tilted box) are
 supported by LAMMPS, but are not implemented for QBMSST.
 
-----------
-
 Restart, fix_modify, output, run start/stop, minimize info
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 

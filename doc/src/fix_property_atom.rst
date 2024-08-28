@@ -15,7 +15,7 @@ Syntax
 
 * ID, group-ID are documented in :doc:`fix <fix>` command
 * property/atom = style name of this fix command
-* name1,name2,... = *mol* or *q* or *rmass* or i_name or d_name or i2_name or d2_name
+* name1, name2,... = *mol* or *q* or *rmass* or *i_name* or *d_name* or *i2_name* or *d2_name*
 
   .. parsed-literal::
 
@@ -24,12 +24,12 @@ Syntax
        *rmass* = per-atom mass
        *temperature* = internal temperature of atom
        *heatflow* = internal heat flow of atom
-       i_name = new integer vector referenced by name
-       d_name = new floating-point vector referenced by name
-       i2_name = new integer array referenced by name
-          i2_name arg = N = number of columns in the array
-       d2_name = new floating-point array referenced by name
-          d2_name arg = N = number of columns in the array
+       *i_name* = new integer vector referenced by name
+       *d_name* = new floating-point vector referenced by name
+       *i2_name* = new integer array referenced by name
+          *i2_name* arg = N = number of columns in the array
+       *d2_name* = new floating-point array referenced by name
+          *d2_name* arg = N = number of columns in the array
 
 * zero of more keyword/value pairs may be appended
 * keyword = *ghost*
@@ -146,7 +146,6 @@ new properties are also defined for the ghost atoms.
    within a :doc:`pair style <pair_style>` or :doc:`fix <fix>` or
    :doc:`compute <compute>` that you write.
 
-----------
 
 This fix is one of a small number that can be defined in an input
 script before the simulation box is created or atoms are defined.
@@ -239,7 +238,6 @@ time-averaged values of two new properties to a custom dump file:
    fix 1 all ave/atom 10 10 100 c_1[1] c_1[2]
    dump 1 all custom 100 tmp.dump id x y z i_flag1 d_flag2 f_1[1] f_1[2]
 
-----------
 
 If you wish to add new :doc:`pair styles <pair_style>`, :doc:`fixes
 <fix>`, or :doc:`computes <compute>` that use the per-atom properties
@@ -321,12 +319,18 @@ uninterrupted fashion.
    If the fix is specified **before** the *read_restart* command its
    data will not be restored.
 
+
 None of the :doc:`fix_modify <fix_modify>` options are relevant to
-this fix.  No global or per-atom quantities are stored by this fix for
-access by various :doc:`output commands <Howto_output>`.  No parameter
+this fix.  
+
+No global or per-atom quantities are stored by this fix for
+access by various :doc:`output commands <Howto_output>`.  
+
+No parameter
 of this fix can be used with the *start/stop* keywords of the
-:doc:`run <run>` command.  This fix is not invoked during :doc:`energy
-minimization <minimize>`.
+:doc:`run <run>` command.  
+
+This fix is not invoked during :doc:`energy minimization <minimize>`.
 
 Restrictions
 """"""""""""

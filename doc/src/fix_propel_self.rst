@@ -124,7 +124,6 @@ in pressure computations.
    :doc:`compute pressure <compute_pressure>` command (turning
    off temperature contributions).
 
-----------
 
 Restart, fix_modify, output, run start/stop, minimize info
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
